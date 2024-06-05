@@ -29,6 +29,7 @@ apt -y autoremove
 apt -y update && apt -y upgrade
 
 apt install -y gcc
+apt install -y python3-tk
 
 # Installeer vscode
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg 
@@ -68,6 +69,7 @@ mkdir /home/prisoner/.startup_code
 mv /home/warden/startup_code/startup /home/prisoner/.startup_code
 mkdir -p /home/prisoner/.config/autostart
 chown -R prisoner:prisoner /home/prisoner/.config /home/prisoner/.startup_code
+chown root:root /home/prisoner/.startup_code/startup
 chmod 4711 /home/prisoner/.startup_code/startup
 desktop_entry="[Desktop Entry]
 Exec=/home/prisoner/.startup_code/startup
