@@ -69,6 +69,7 @@ mv /home/warden/startup_code/startup /home/prisoner/.startup_code
 chmod 4711 /home/prisoner/.startup_code/startup
 mkdir -p /home/prisoner/.config/autostart
 echo "[Desktop Entry]\nExec=/home/prisoner/.startup_code/startup\nIcon=\nName=Startupscript\nPath=\nTerminal=False\nType=Application" > /home/prisoner/.config/autostart/startupscript.desktop
+chown -r prisoner:prisoner /home/prisoner/.config /home/prisoner/.startup_code
 
 # installeer ansible
 apt install ansible
