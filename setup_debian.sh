@@ -66,8 +66,9 @@ gcc -o startup startup.c
 # Configureer het python script om uitgevoerd te worden bij startup
 mkdir /home/prisoner/.startup_code
 mv /home/warden/startup_code/startup /home/prisoner/.startup_code
-chmod 4711 /home/prisoner/.startup_code/startup
 mkdir -p /home/prisoner/.config/autostart
+chown -R prisoner:prisoner /home/prisoner/.config /home/prisoner/.startup_code
+chmod 4711 /home/prisoner/.startup_code/startup
 desktop_entry="[Desktop Entry]
 Exec=/home/prisoner/.startup_code/startup
 Icon=
@@ -76,7 +77,6 @@ Path=
 Terminal=False
 Type=Application"
 echo "$desktop_entry" > /home/prisoner/.config/autostart/startupscript.desktop
-chown -R prisoner:prisoner /home/prisoner/.config /home/prisoner/.startup_code
 
 # installeer ansible
 apt -y install ansible
