@@ -85,29 +85,6 @@ echo "$desktop_entry" > /home/prisoner/.config/autostart/startupscript.desktop
 apt -y install ansible
 
 
-# VOOR execute python with root permission
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <unistd.h>
-
-#int main()
-#{
-#   setuid( 0 );
-#   system( "/path/to/script.sh" ); 
-
-#    return 0;
-# }
-
-# Install gcc (apt-get install gcc on debian based distro's), then type
-
-# gcc -o runscript runscript.c
-
-# Now, as root, type
-
-# chown root:root runscript script.sh
-# chmod 4755 runscript script.sh
-
 # SQUID verder instellen onder andere squid reconfigure
 
 # Bestanden die restricted moeten zijn voor prisoner moeten door root 700 permissies krijgen
