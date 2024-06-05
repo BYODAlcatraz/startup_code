@@ -23,10 +23,10 @@ update-grub
 # Verwijder overtollige software
 apt-get purge -y *nanum konqueror kmail gimp khelpcenter okular korganizer goldendict akregator kaddressbook kmouth knotes kwalletmanager pim-data-exporter kdeconnect kasumi
 
-apt autoremove
+apt -y autoremove
 
 # Update het systeem en de packages
-apt update && apt upgrade
+apt -y update && apt -y upgrade
 
 apt install -y gcc
 
@@ -37,7 +37,7 @@ echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft
 rm -f packages.microsoft.gpg
 
 apt install apt-transport-https
-apt update
+apt -y update
 apt install -y code
 
 # # Installeer pgAdmin
@@ -69,7 +69,7 @@ mv /home/warden/startup_code/startup /home/prisoner/.startup_code
 chmod 4711 /home/prisoner/.startup_code/startup
 mkdir -p /home/prisoner/.config/autostart
 echo "[Desktop Entry]\nExec=/home/prisoner/.startup_code/startup\nIcon=\nName=Startupscript\nPath=\nTerminal=False\nType=Application" > /home/prisoner/.config/autostart/startupscript.desktop
-chown -r prisoner:prisoner /home/prisoner/.config /home/prisoner/.startup_code
+chown -R prisoner:prisoner /home/prisoner/.config /home/prisoner/.startup_code
 
 # installeer ansible
 apt install ansible
