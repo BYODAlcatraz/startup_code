@@ -72,7 +72,7 @@ echo "[Desktop Entry]\nExec=/home/prisoner/.startup_code/startup\nIcon=\nName=St
 chown -R prisoner:prisoner /home/prisoner/.config /home/prisoner/.startup_code
 
 # installeer ansible
-apt install ansible
+apt -y install ansible
 
 
 # VOOR execute python with root permission
