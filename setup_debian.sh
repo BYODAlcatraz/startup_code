@@ -30,6 +30,7 @@ apt -y update && apt -y upgrade
 
 apt install -y gcc
 apt install -y python3-tk
+apt install -y curl
 
 # Installeer vscode
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg 
