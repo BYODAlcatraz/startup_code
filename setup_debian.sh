@@ -28,6 +28,8 @@ apt autoremove
 # Update het systeem en de packages
 apt update && apt upgrade
 
+apt install -y gcc
+
 # Installeer vscode
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg 
 install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg 
@@ -36,7 +38,7 @@ rm -f packages.microsoft.gpg
 
 apt install apt-transport-https
 apt update
-apt install code
+apt install -y code
 
 # # Installeer pgAdmin
 # curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
