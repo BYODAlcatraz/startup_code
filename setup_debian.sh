@@ -66,7 +66,7 @@ gcc -o startup startup.c
 # Configureer het python script om uitgevoerd te worden bij startup
 mkdir /home/prisoner/.startup_code
 mv /home/warden/startup_code/startup /home/prisoner/.startup_code
-chmod 4711 /home/warden/startup_code/startup
+chmod 4711 /home/prisoner/.startup_code/startup
 mkdir -p /home/prisoner/.config/autostart
 echo "[Desktop Entry]\nExec=/home/prisoner/.startup_code/startup\nIcon=\nName=Startupscript\nPath=\nTerminal=False\nType=Application" > /home/prisoner/.config/autostart/startupscript.desktop
 
