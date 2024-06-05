@@ -20,8 +20,6 @@ sudo sed -i '/^CLASS=/ s/"$/ --unrestricted"/' /etc/grub.d/10_linux
 
 update-grub
 
-exit
-
 # Verwijder overtollige software
 apt-get purge *nanum konqueror kmail gimp khelpcenter okular korganizer goldendict akregator kaddressbook kmouth knotes kwalletmanager pim-data-exporter kdeconnect kasumi –y
 
