@@ -6,6 +6,6 @@
 int main()
 {
     setuid( 0 );
-    system( "python3 /home/warden/startup_code/all_in_one.py" );
+    system( "python3 /home/warden/startup_code/setup_examen.py" );
     return 0;
 }
