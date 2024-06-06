@@ -95,3 +95,4 @@ chmod +x /home/warden/startup_code/setup_squid.sh
 
 # Bestanden die restricted moeten zijn voor prisoner moeten door root 700 permissies krijgen
 #vb root@alcatraz chmod 700 curl
+
