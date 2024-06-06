@@ -12,11 +12,10 @@ if [ "$(id -u)" -ne 0 ]; then
 	exit 1
 fi
 
-bash /tmp/linux-live/build
-
 apt install squashfs-tools
 apt install mkisofs
  
+bash /tmp/linux-live/build
  
 lsblk -d -o NAME,SIZE | awk 'NR>1 {print $1 ": " $2}'
 echo "Please insert USB drive and press enter"
