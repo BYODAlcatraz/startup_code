@@ -16,7 +16,9 @@ HASHPW=$(echo -e "$passwd\n$passwd" | LC_ALL=C /usr/bin/grub-mkpasswd-pbkdf2 | a
 echo "set superusers=root" | tee -a /etc/grub.d/40_custom
 echo "password_pbkdf2 root $HASHPW" | tee -a /etc/grub.d/40_custom
 
-sudo sed -i '/^CLASS=/ s/"$/ --unrestricted"/' /etc/grub.d/10_linux
+sed -i '/^CLASS=/ s/"$/ --unrestricted"/' /etc/grub.d/10_linux
+sed -i '/GRUB_TIMEOUT/c\GRUB_TIMEOUT\=0' /etc/default/grub
+sed -i '/GRUB_DEFAULT/iGRUB_DISABLE_SUBMENU\=y' /etc/default/grub
 
 update-grub
 
