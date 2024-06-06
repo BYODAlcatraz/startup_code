@@ -68,7 +68,7 @@ cd /home/warden/startup_code
 gcc -o startup startup.c
 
 # Configureer het python script om uitgevoerd te worden bij startup
-mkdir /home/prisoner/.startup_code
+mkdir -p /home/prisoner/.startup_code
 mv /home/warden/startup_code/startup /home/prisoner/.startup_code
 mkdir -p /home/prisoner/.config/autostart
 chown -R prisoner:prisoner /home/prisoner/.config /home/prisoner/.startup_code
@@ -86,9 +86,11 @@ echo "$desktop_entry" > /home/prisoner/.config/autostart/startupscript.desktop
 # installeer ansible
 apt -y install ansible
 
+# Stel examen achtergrond in
+./setup_wallpaper.sh
 
 # SQUID verder instellen onder andere squid reconfigure
-chmod +x /home/warden/startup_code/configure-squid.sh
+chmod +x /home/warden/startup_code/setup_squid.sh
 /home/warden/startup_code/setup_squid.sh
 
 # Bestanden die restricted moeten zijn voor prisoner moeten door root 700 permissies krijgen
