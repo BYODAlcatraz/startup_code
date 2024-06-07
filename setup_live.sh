@@ -53,3 +53,5 @@ mount /dev/$disk /media/warden/live_usb
 cp -r /tmp/linux-data*/linux/ /media/warden/live_usb/
  
 bash /media/warden/live_usb/linux/boot/bootinst.sh
+
+umount /media/warden/live_usb
