@@ -16,8 +16,6 @@ apt install squashfs-tools
 apt install mkisofs
  
 bash /tmp/linux-live/build
-
-bash
  
 lsblk -d -o NAME,SIZE | awk 'NR>1 {print $1 ": " $2}'
 echo "Please insert USB drive and press any key to continue"
