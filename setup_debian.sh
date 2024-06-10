@@ -6,6 +6,15 @@ if [ "$(id -u)" -ne 0 ]; then
 	exit 1
 fi
 
+# Voeg de prisoner user toe
+useradd -m -s /bin/bash warden
+useradd -m -s /bin/bash prisoner
+
+# Set the user's password
+echo prisoner:prisoner | chpasswd
+echo warden:warden | chpasswd
+
+cp -r ../startup_code /home/warden/
 
 # Verdediging tegen booten in single user mode
 #read -s -p "Enter password: " passwd
@@ -53,14 +62,6 @@ apt install -y code
 # apt install pgadmin4
 
 # apt install pgadmin4-desktop
-
-# Voeg de prisoner user toe
-useradd -m -s /bin/bash warden
-useradd -m -s /bin/bash prisoner
-
-# Set the user's password
-echo prisoner:prisoner | chpasswd
-echo warden:warden | chpasswd
 
 # Disable de Nouveau drivers
 touch /etc/modprobe.d/blacklist-nouveau.conf
