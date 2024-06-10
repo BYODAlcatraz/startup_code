@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+#set -e
 # Verifieer of de gebruiker root is
 if [ "$(id -u)" -ne 0 ]; then
 	echo 'Script must be ran by root'>&2
