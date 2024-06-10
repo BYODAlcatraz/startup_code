@@ -74,6 +74,7 @@ apt install -y code
 echo -e "\033[38;5;201m Disabling Nouveau drivers \033[0m"
 touch /etc/modprobe.d/blacklist-nouveau.conf
 echo "options nouveau modeset=0" > /etc/modprobe.d/blacklist-nouveau.conf
+echo "blacklist nouveau" >> /etc/modules.conf.d/15-blacklist-nouveau.conf
 update-initramfs -u
 
 # Compileer het start programma
