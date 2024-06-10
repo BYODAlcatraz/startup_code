@@ -8,19 +8,19 @@ fi
 
 
 # Verdediging tegen booten in single user mode
-read -s -p "Enter password: " passwd
-echo 
+#read -s -p "Enter password: " passwd
+#echo 
 
-HASHPW=$(echo -e "$passwd\n$passwd" | LC_ALL=C /usr/bin/grub-mkpasswd-pbkdf2 | awk '/hash of / {print $NF}')
+#HASHPW=$(echo -e "$passwd\n$passwd" | LC_ALL=C /usr/bin/grub-mkpasswd-pbkdf2 | awk '/hash of / {print $NF}')
 
-echo "set superusers=root" | tee -a /etc/grub.d/40_custom
-echo "password_pbkdf2 root $HASHPW" | tee -a /etc/grub.d/40_custom
+#echo "set superusers=root" | tee -a /etc/grub.d/40_custom
+#echo "password_pbkdf2 root $HASHPW" | tee -a /etc/grub.d/40_custom
 
-sed -i '/^CLASS=/ s/"$/ --unrestricted"/' /etc/grub.d/10_linux
-sed -i '/GRUB_TIMEOUT/c\GRUB_TIMEOUT\=0' /etc/default/grub
-sed -i '/GRUB_DEFAULT/iGRUB_DISABLE_SUBMENU\=y' /etc/default/grub
+# sed -i '/^CLASS=/ s/"$/ --unrestricted"/' /etc/grub.d/10_linux
+# sed -i '/GRUB_TIMEOUT/c\GRUB_TIMEOUT\=0' /etc/default/grub
+# sed -i '/GRUB_DEFAULT/iGRUB_DISABLE_SUBMENU\=y' /etc/default/grub
 
-update-grub
+# update-grub
 
 # Verwijder overtollige software
 apt-get purge -y *nanum konqueror kmail gimp khelpcenter okular korganizer goldendict akregator kaddressbook kmouth knotes kwalletmanager pim-data-exporter kdeconnect kasumi
@@ -55,12 +55,17 @@ apt install -y code
 # apt install pgadmin4-desktop
 
 # Voeg de prisoner user toe
+useradd -m -s /bin/bash warden
 useradd -m -s /bin/bash prisoner
 
 # Set the user's password
 echo prisoner:prisoner | chpasswd
+echo warden:warden | chpasswd
 
-
+# Disable de Nouveau drivers
+touch /etc/modprobe.d/blacklist-nouveau.conf
+echo "options nouveau modeset=0" > /etc/modprobe.d/blacklist-nouveau.conf
+update-initramfs -u
 
 # Compileer het start programma
 
