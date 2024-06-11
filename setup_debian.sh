@@ -50,6 +50,7 @@ goldendict hitori gnome-klotski gnome-mahjongg gnome-mines gnome-maps seahorse q
 
 apt -y autoremove
 
+apt-mark hold libreoffice*
 
 # Update het systeem en de packages
 print "Updating system packages"
