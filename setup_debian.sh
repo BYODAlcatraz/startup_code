@@ -66,14 +66,6 @@ apt install apt-transport-https
 apt -y update
 apt install -y code
 
-# Disable de Nouveau drivers
-# print "Removing Nouveau drivers"
-# touch /etc/modprobe.d/blacklist-nouveau.conf
-# echo "options nouveau modeset=0" > /etc/modprobe.d/blacklist-nouveau.conf
-# echo "blacklist nouveau" >> /etc/modules.conf.d/15-blacklist-nouveau.conf
-# apt-get purge xserver-xorg-video-nouveau -y
-# update-initramfs -u
-
 # Compileer het start programma
 print "Compiling startup code for startup program"
 cd /home/warden/startup_code
@@ -84,7 +76,7 @@ gcc -o startup startup.c
 print "Configuring startup python script to be ran at boot"
 mkdir -p /home/student/.startup_code
 mv /home/warden/startup_code/startup /home/student/.startup_code
-mv /home/warden/startup_code/wallpaper_exam.png /home/student/.startup_code
+mv /home/warden/startup_code/wallpaper_exam.png /usr/share/wallpapers
 mkdir -p /home/student/.config/autostart
 chown -R student:student /home/student/.config /home/student/.startup_code
 chown root:root /home/student/.startup_code/startup
@@ -105,7 +97,9 @@ apt -y install ansible
 
 # Stel examen achtergrond in
 print "Setting up exam wallpaper"
-echo "gsettings set org.gnome.desktop.background picture-uri 'file:///home/student/.startup_code/wallpaper_exam.png'" >> /home/student/.bashrc
+bash /home/warden/startup_code/setup_wallpaper.sh
+
+print "DONE!"
 
 # # SQUID verder instellen onder andere squid reconfigure
 # print "Further Squid Configuration"
