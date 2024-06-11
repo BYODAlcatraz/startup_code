@@ -9,15 +9,15 @@ fi
 # Functie voor te echo'en in roze tekst
 print(){ value=${1}; echo -e "\033[38;5;201m${value}\033[0m"; }
 
-# Voeg de prisoner user toe
-print "Adding user prisoner and warden"
+# Voeg de users toe
+print "Adding user student and warden"
 useradd -m -s /bin/bash warden
 usermod -aG sudo warden
-useradd -m -s /bin/bash prisoner
+useradd -m -s /bin/bash student
 
 # Set the user's password
-print "Setting prisoner and warden passwords"
-echo prisoner:prisoner | chpasswd
+print "Setting student and warden passwords"
+echo student:student | chpasswd
 echo warden:warden | chpasswd
 
 print "Copying startup code to /home/warden"
@@ -90,20 +90,20 @@ gcc -o startup startup.c
 
 # Configureer het python script om uitgevoerd te worden bij startup
 print "Configuring startup python script to be ran at boot"
-mkdir -p /home/prisoner/.startup_code
-mv /home/warden/startup_code/startup /home/prisoner/.startup_code
-mkdir -p /home/prisoner/.config/autostart
-chown -R prisoner:prisoner /home/prisoner/.config /home/prisoner/.startup_code
-chown root:root /home/prisoner/.startup_code/startup
-chmod 4711 /home/prisoner/.startup_code/startup
+mkdir -p /home/student/.startup_code
+mv /home/warden/startup_code/startup /home/student/.startup_code
+mkdir -p /home/student/.config/autostart
+chown -R student:student /home/student/.config /home/student/.startup_code
+chown root:root /home/student/.startup_code/startup
+chmod 4711 /home/student/.startup_code/startup
 desktop_entry="[Desktop Entry]
-Exec=/home/prisoner/.startup_code/startup
+Exec=/home/student/.startup_code/startup
 Icon=
 Name=Startupscript
 Path=
 Terminal=False
 Type=Application"
-echo "$desktop_entry" > /home/prisoner/.config/autostart/startupscript.desktop
+echo "$desktop_entry" > /home/student/.config/autostart/startupscript.desktop
 
 # installeer ansible
 print "Installing Ansible"
@@ -118,6 +118,6 @@ print "Further Squid Configuration"
 chmod +x /home/warden/startup_code/setup_squid.sh
 /home/warden/startup_code/setup_squid.sh
 
-# Bestanden die restricted moeten zijn voor prisoner moeten door root 700 permissies krijgen
+# Bestanden die restricted moeten zijn voor student moeten door root 700 permissies krijgen
 #vb root@alcatraz chmod 700 curl
 
