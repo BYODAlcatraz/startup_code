@@ -6,6 +6,11 @@ if [ "$(id -u)" -ne 0 ]; then
 	exit 1
 fi
 
+apt install -y python3-tk
+apt install -y wget
+apt install -y git
+apt install -y vim
+
 # Functie voor te echo'en in roze tekst
 print(){ value=${1}; echo -e "\033[38;5;201m${value}\033[0m"; }
 
@@ -40,7 +45,8 @@ cp -r ../startup_code /home/warden/
 
 # Verwijder overtollige software
 print "Removing unnessecary software"
-apt-get purge -y *nanum konqueror kmail gimp khelpcenter okular korganizer goldendict akregator kaddressbook kmouth knotes kwalletmanager pim-data-exporter kdeconnect kasumi
+apt-get purge -y calamares gnome-initial-setup gnome-2048 aisleriot cheese gnome-chess gnome-contacts five-or-more four-in-a-row gnome-nibbles \
+goldendict hitori gnome-klotski gnome-mahjongg gnome-mines gnome-maps seahorse quadrapassel iagno gnome-robots gnome-sudoku swell-foop tali gnome-taquin gnome-tetravex thunderbird
 
 apt -y autoremove
 
@@ -48,11 +54,6 @@ apt -y autoremove
 # Update het systeem en de packages
 print "Updating system packages"
 apt -y update && apt -y upgrade
-
-apt install -y gcc
-apt install -y python3-tk
-apt install -y curl
-apt install -y wget
 
 # Installeer vscode
 print "Installing VS Code"
@@ -65,22 +66,13 @@ apt install apt-transport-https
 apt -y update
 apt install -y code
 
-# # Installeer pgAdmin
-# curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
-
-# sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
-
-# apt install pgadmin4
-
-# apt install pgadmin4-desktop
-
 # Disable de Nouveau drivers
-print "Removing Nouveau drivers"
-touch /etc/modprobe.d/blacklist-nouveau.conf
-echo "options nouveau modeset=0" > /etc/modprobe.d/blacklist-nouveau.conf
-echo "blacklist nouveau" >> /etc/modules.conf.d/15-blacklist-nouveau.conf
-apt-get purge xserver-xorg-video-nouveau -y
-update-initramfs -u
+# print "Removing Nouveau drivers"
+# touch /etc/modprobe.d/blacklist-nouveau.conf
+# echo "options nouveau modeset=0" > /etc/modprobe.d/blacklist-nouveau.conf
+# echo "blacklist nouveau" >> /etc/modules.conf.d/15-blacklist-nouveau.conf
+# apt-get purge xserver-xorg-video-nouveau -y
+# update-initramfs -u
 
 # Compileer het start programma
 print "Compiling startup code for startup program"
@@ -92,17 +84,19 @@ gcc -o startup startup.c
 print "Configuring startup python script to be ran at boot"
 mkdir -p /home/student/.startup_code
 mv /home/warden/startup_code/startup /home/student/.startup_code
+mv /home/warden/startup_code/wallpaper_exam.png /home/student/.startup_code
 mkdir -p /home/student/.config/autostart
 chown -R student:student /home/student/.config /home/student/.startup_code
 chown root:root /home/student/.startup_code/startup
 chmod 4711 /home/student/.startup_code/startup
 desktop_entry="[Desktop Entry]
+Type=Application
 Exec=/home/student/.startup_code/startup
-Icon=
-Name=Startupscript
-Path=
-Terminal=False
-Type=Application"
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=My script
+Comment=Startup script"
 echo "$desktop_entry" > /home/student/.config/autostart/startupscript.desktop
 
 # installeer ansible
@@ -111,12 +105,12 @@ apt -y install ansible
 
 # Stel examen achtergrond in
 print "Setting up exam wallpaper"
-./setup_wallpaper.sh
+echo "gsettings set org.gnome.desktop.background picture-uri 'file:///home/student/.startup_code/wallpaper_exam.png'" >> /home/student/.bashrc
 
-# SQUID verder instellen onder andere squid reconfigure
-print "Further Squid Configuration"
-chmod +x /home/warden/startup_code/setup_squid.sh
-/home/warden/startup_code/setup_squid.sh
+# # SQUID verder instellen onder andere squid reconfigure
+# print "Further Squid Configuration"
+# chmod +x /home/warden/startup_code/setup_squid.sh
+# /home/warden/startup_code/setup_squid.sh
 
 # Bestanden die restricted moeten zijn voor student moeten door root 700 permissies krijgen
 #vb root@alcatraz chmod 700 curl
