@@ -9,6 +9,7 @@ fi
 # Voeg de prisoner user toe
 echo -e "\033[38;5;201m Adding prisoner and warden users \033[0m"
 useradd -m -s /bin/bash warden
+usermod -aG sudo warden
 useradd -m -s /bin/bash prisoner
 
 # Set the user's password
