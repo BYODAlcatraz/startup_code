@@ -1,7 +1,5 @@
 #!/bin/bash
-su student
-gsettings get org.gnome.desktop.background picture-uri 'file:///usr/share/wallpapers/wallpaper_exam.png'
-exit
+su student -c gsettings get org.gnome.desktop.background picture-uri 'file:///usr/share/wallpapers/wallpaper_exam.png'
 
 
 # mkdir -p /etc/dconf/profile
