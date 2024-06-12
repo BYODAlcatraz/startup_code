@@ -9,3 +9,6 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true
 
 # set wallpaper
 gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/wallpapers/wallpaper_exam.png'
+
+# Add minimize and maximize buttons
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
