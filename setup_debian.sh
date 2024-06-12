@@ -101,6 +101,7 @@ apt -y install ansible
 print "Setting up exam wallpaper"
 bash /home/warden/startup_code/setup_wallpaper.sh
 
+print "Setting up minimize buttons"
 su student -c "gsettings set org.gnome.desktop.wm.preferences button-layout \":minimize,maximize,close\""
 
 print "DONE!"
