@@ -95,7 +95,6 @@ Comment=Startup script"
 echo "$desktop_entry" > /home/student/.config/autostart/startupscript.desktop
 
 
-
 #Desktop entry voor Dock bar en wallpaper
 print "Setting up wallpaper and configuring dock bar"
 mv /home/warden/startup_code/ux.sh /home/student/.startup_code
@@ -114,12 +113,12 @@ echo "$desktop_entry" > /home/student/.config/autostart/ux.desktop
 print "Installing Ansible"
 apt -y install ansible
 
-# # Stel examen achtergrond in
-# print "Setting up exam wallpaper"
-# bash /home/warden/startup_code/setup_wallpaper.sh
+# Configureer mitmproxy
+print "Configuring mitmproxy"
 
-# print "Setting up minimize buttons"
-# su student -c "gsettings set org.gnome.desktop.wm.preferences button-layout \":minimize,maximize,close\""
+bash /home/warden/startup_code/start_mitmproxy.sh
+
+
 
 print "DONE!"
 
