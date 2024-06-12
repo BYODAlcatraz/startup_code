@@ -88,3 +88,4 @@ cp /home/warden/startup_code/block.py /root/.mitmproxy/
 
 # Kopieer de blokkeerpagina naar de juiste folder
 cp /home/warden/startup_code/access_denied.html /root/.mitmproxy/
+cp /home/warden/startup_code/ucll_logo.png /root/.mitmproxy/
