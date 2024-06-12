@@ -78,8 +78,35 @@ def execute_script(code):
 root = tk.Tk()
 root.title("Code Sender")
 
+
+# Label for keyboard layout
+label = tk.Label(root, text="Select your preferred keyboard layout")
+label.pack(pady=10)
+
+# Radiobuttons for keyboard layout
+layout = tk.StringVar()
+
+def changelayout(a, b, c):
+    setlayout = "setxkbmap " + layout.get()
+    process = subprocess.Popen(setlayout, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    stdout, stderr = process.communicate()
+    return process.returncode, stdout, stderr
+
+R1 = tk.Radiobutton(root, text="AZERTY", variable=layout, value="be").pack(side = "top", ipady = 5)
+R2 = tk.Radiobutton(root, text="QWERTY", variable=layout, value="us").pack(side = "top", ipady = 5)
+
+layout.trace_add('write', changelayout)
+
+# Label for r-number
+label = tk.Label(root, text="Student-number (rxxxxxxx)")
+label.pack(pady=10)
+
+# Create an entry widget
+entry = tk.Entry(root, width=30)
+entry.pack(pady=10)
+
 # Create a label
-label = tk.Label(root, text="Enter your code:")
+label = tk.Label(root, text="Exam Code")
 label.pack(pady=10)
 
 # Create an entry widget
