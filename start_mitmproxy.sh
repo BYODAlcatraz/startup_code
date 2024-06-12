@@ -10,5 +10,8 @@ fi
 iptables-restore < ~/rules.v4
 ip6tables-restore < ~/rules.v6
 
+# Kopieer de python script naar juist folder
+cp /home/warden/startup_code/block.py /root/.mitmproxy/
+
 # Start de mitmproxy
-mitmdump --mode transparent &
+mitmdump --mode transparent --showhost -s /root/.mitmproxy/block.py &
