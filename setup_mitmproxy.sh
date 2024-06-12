@@ -51,5 +51,37 @@ mitmdump --mode transparent
 sleep 5
 pkill mitmdump
 
+# Configureer Firefox instellingen en importeer ca certificaat
+mkdir -p /etc/ca-certificates
+openssl x509 -in ~/.mitmproxy/mitmproxy-ca-cert.pem -outform DER -out /etc/ca-certificates/mitmproxy-ca-cert.der
+echo '
+{
+  "policies": {
+    "BlockAboutAddons": true,
+    "BlockAboutConfig": true,
+    "BlockAboutProfiles": true,
+    "BlockAboutSupport": true,
+    "DefaultDownloadDirectory": "${home}/Downloads",
+    "DisableDeveloperTools": true,
+    "DisableFeedbackCommands": true,
+    "DisableFirefoxAccounts": true,
+    "DisableForgetButton": true,
+    "DisableFormHistory": true,
+    "DisableMasterPasswordCreation": true,
+    "DisablePocket": true,
+    "DisablePrivateBrowsing": true,
+    "DisableProfileImport": true,
+    "DisableSetDesktopBackground": true,
+    "DownloadDirectory": "${home}/Downloads",
+    "Certificates": {
+            "ImportEnterpriseRoots": true,
+            "Install": [
+                    "/etc/ca-certificates/mitmproxy-ca-cert.der"
+            ]
+    }
+  }
+}
+' > /usr/lib/firefox-esr/distribution/policies.json
+
 # Kopieer de python script naar juist folder
 cp /home/warden/startup_code/block.py /root/.mitmproxy/
