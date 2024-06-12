@@ -6,10 +6,11 @@ if [ "$(id -u)" -ne 0 ]; then
 	exit 1
 fi
 
-apt install -y python3-tk
-apt install -y wget
-apt install -y git
-apt install -y vim
+apt install -y python3-tk \
+wget \
+git \
+vim \
+gnome-shell-extenshion-dashtodock
 
 # Functie voor te echo'en in roze tekst
 print(){ value=${1}; echo -e "\033[38;5;201m${value}\033[0m"; }
