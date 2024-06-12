@@ -15,7 +15,7 @@ nohup /home/warden/startup_code/start_mitm.sh
 
 while true; do
 	sleep 1
-	if [ ps -Al | grep mitmproxy ]
+	if [ ps -Al | grep mitmdump ]
 	then
 		echo "running" >> /home/student/log.txt
 	else
