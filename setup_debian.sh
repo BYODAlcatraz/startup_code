@@ -118,6 +118,14 @@ print "Configuring mitmproxy"
 
 bash /home/warden/startup_code/setup_mitmproxy.sh
 
+echo "[Unit]
+Description=mitmproxy
+[Service]
+ExecStart=bash /home/warden/startup_code/start_mitmproxy.sh
+[Install]
+WantedBy=multi-user.target" > /etc/systemd/system/mitmproxy.service
+systemctl enable mitmproxy.service
+
 
 
 print "DONE!"
