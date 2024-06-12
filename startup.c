@@ -6,7 +6,7 @@
 int main()
 {
     setuid( 0 );
-    system( "python3 /home/warden/startup_code/setup_examen.py" );
     system( "bash /home/warden/startup_code/start_mitmproxy.sh" );
+    system( "python3 /home/warden/startup_code/setup_examen.py" );
     return 0;
 }
