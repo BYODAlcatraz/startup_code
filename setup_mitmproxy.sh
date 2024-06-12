@@ -43,8 +43,8 @@ ip6tables -t nat -A OUTPUT -p udp -m owner --uid-owner student -j REDIRECT --to-
 ip6tables -t nat -A OUTPUT -p icmp -m owner --uid-owner student -j REDIRECT --to-port 8080
 
 # Save rules to file
-iptables-save > ~/rules.v4
-ip6tables-save > ~/rules.v6
+iptables-save > /root/rules.v4
+ip6tables-save > /root/rules.v6
 
 # Start mitmproxy om configuratie bestanden te laten genereren
 mitmdump --mode transparent &
@@ -53,7 +53,7 @@ pkill mitmdump
 
 # Configureer Firefox instellingen en importeer ca certificaat
 mkdir -p /etc/ca-certificates
-openssl x509 -in ~/.mitmproxy/mitmproxy-ca-cert.pem -outform DER -out /etc/ca-certificates/mitmproxy-ca-cert.der
+openssl x509 -in /root/.mitmproxy/mitmproxy-ca-cert.pem -outform DER -out /etc/ca-certificates/mitmproxy-ca-cert.der
 echo '
 {
   "policies": {

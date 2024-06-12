@@ -7,8 +7,8 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 # Herstel iptables regels
-iptables-restore < ~/rules.v4
-ip6tables-restore < ~/rules.v6
+iptables-restore < /root/rules.v4
+ip6tables-restore < /root/rules.v6
 
 # Start de mitmproxy
 #chmod +x /home/warden/startup_code/start_mitm.sh
