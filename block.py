@@ -6,7 +6,7 @@ class Whitelist:
     def __init__(self):
         self.urls = []
 
-        for re_url in open('whitelist.txt'):
+        for re_url in open('/root/.mitmproxy/whitelist.txt'):
             self.urls.append(re_url.strip())
 
     def response(self, flow):
