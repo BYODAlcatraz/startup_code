@@ -46,7 +46,7 @@ cp -r ../startup_code /home/warden/
 
 # Verwijder overtollige software
 print "Removing unnessecary software"
-apt-get purge -y calamares gnome-initial-setup gnome-2048 aisleriot cheese gnome-chess gnome-contacts five-or-more four-in-a-row gnome-nibbles \
+apt-get purge -y calamares gnome-initial-setup gnome-2048 aisleriot cheese gnome-chess gnome-contacts five-or-more four-in-a-row gnome-nibbles xiterm+thai mlterm-common \
 goldendict hitori gnome-klotski gnome-mahjongg gnome-mines gnome-maps seahorse quadrapassel iagno gnome-robots gnome-sudoku swell-foop tali gnome-taquin gnome-tetravex thunderbird
 
 apt -y autoremove
