@@ -116,7 +116,7 @@ apt -y install ansible
 # Configureer mitmproxy
 print "Configuring mitmproxy"
 
-bash /home/warden/startup_code/start_mitmproxy.sh
+bash /home/warden/startup_code/setup_mitmproxy.sh
 
 
 
