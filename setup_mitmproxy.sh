@@ -7,10 +7,10 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 # Download mitmproxy
-apt install mitmproxy
+apt install -y mitmproxy
 
 # Download iptables
-apt install iptables
+apt install -y iptables
 
 # Enable IP forwarding
 echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
@@ -47,4 +47,5 @@ iptables-save > ~/rules.v4
 ip6tables-save > ~/rules.v6
 
 # Kopieer de python script naar juist folder
+mkdir -p /root/.mitmproxy/
 cp /home/warden/startup_code/block.py /root/.mitmproxy/
