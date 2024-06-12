@@ -83,6 +83,7 @@ mkdir -p /home/student/.config/autostart
 chown -R student:student /home/student/.config /home/student/.startup_code
 chown root:root /home/student/.startup_code/startup
 chmod 4711 /home/student/.startup_code/startup
+
 desktop_entry="[Desktop Entry]
 Type=Application
 Exec=/home/student/.startup_code/startup
@@ -93,16 +94,32 @@ Name=My script
 Comment=Startup script"
 echo "$desktop_entry" > /home/student/.config/autostart/startupscript.desktop
 
+
+
+#Desktop entry voor Dock bar en wallpaper
+print "Setting up wallpaper and configuring dock bar"
+mv /home/warden/startup_code/ux.sh /home/student/.startup_code
+chmod +x /home/student/.startup_code/ux.sh
+desktop_entry="[Desktop Entry]
+Type=Application
+Exec=/home/student/.startup_code/ux.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=UX script
+Comment=Startup script for UX"
+echo "$desktop_entry" > /home/student/.config/autostart/ux.desktop
+
 # installeer ansible
 print "Installing Ansible"
 apt -y install ansible
 
-# Stel examen achtergrond in
-print "Setting up exam wallpaper"
-bash /home/warden/startup_code/setup_wallpaper.sh
+# # Stel examen achtergrond in
+# print "Setting up exam wallpaper"
+# bash /home/warden/startup_code/setup_wallpaper.sh
 
-print "Setting up minimize buttons"
-su student -c "gsettings set org.gnome.desktop.wm.preferences button-layout \":minimize,maximize,close\""
+# print "Setting up minimize buttons"
+# su student -c "gsettings set org.gnome.desktop.wm.preferences button-layout \":minimize,maximize,close\""
 
 print "DONE!"
 
