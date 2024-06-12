@@ -46,13 +46,8 @@ fi
 
 rm "/tmp/script.yaml"
 
-# Setting dock bar to be always visible
-# su - student -c "gnome-extensions enable dash-to-dock@micxgx.gmail.com"
-# su - student -c "gsettings set org.gnome.shell.extensions.dash-to-dock extend-height true"
-# su - student -c "gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true"
 
 echo "Ansible playbook ran successfully."
-su - sudent -c "bash /home/student/.startup_code/ux.sh
 """
     process = subprocess.Popen(bash_script, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     stdout, stderr = process.communicate()
