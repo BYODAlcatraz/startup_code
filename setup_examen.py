@@ -44,7 +44,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-systemctl start mitmproxy
+systemctl restart mitmproxy
 
 rm "/tmp/script.yaml"
 
