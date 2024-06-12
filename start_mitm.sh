@@ -3,5 +3,5 @@
 
 
 echo "test"
-mitmdump --mode transparent --showhost -s /root/.mitmproxy/block.py
+mitmdump --mode transparent --showhost -s /root/.mitmproxy/block.py &
 echo "test2"
