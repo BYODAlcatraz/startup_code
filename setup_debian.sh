@@ -10,7 +10,7 @@ apt install -y python3-tk \
 wget \
 git \
 vim \
-gnome-shell-extenshion-dashtodock
+gnome-shell-extension-dashtodock
 
 # Functie voor te echo'en in roze tekst
 print(){ value=${1}; echo -e "\033[38;5;201m${value}\033[0m"; }
