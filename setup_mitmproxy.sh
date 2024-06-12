@@ -45,3 +45,11 @@ ip6tables -t nat -A OUTPUT -p icmp -m owner --uid-owner student -j REDIRECT --to
 # Save rules to file
 iptables-save > ~/rules.v4
 ip6tables-save > ~/rules.v6
+
+# Start mitmproxy om configuratie bestanden te laten genereren
+mitmdump --mode transparent
+sleep 5
+pkill mitmdump
+
+# Kopieer de python script naar juist folder
+cp /home/warden/startup_code/block.py /root/.mitmproxy/
