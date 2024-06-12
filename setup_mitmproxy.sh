@@ -83,5 +83,8 @@ echo '
 }
 ' > /usr/lib/firefox-esr/distribution/policies.json
 
-# Kopieer de python script naar juist folder
+# Kopieer het blokkeer python script naar juiste folder
 cp /home/warden/startup_code/block.py /root/.mitmproxy/
+
+# Kopieer de blokkeerpagina naar de juiste folder
+cp /home/warden/startup_code/access_denied.html /root/.mitmproxy/
