@@ -46,6 +46,11 @@ fi
 
 rm "/tmp/script.yaml"
 
+# Setting dock bar to be always visible
+su - student -c "gnome-extensions enable dash-to-dock@micxgx.gmail.com"
+su - student -c "gsettings set org.gnome.shell.extensions.dash-to-dock extend-height true"
+su - student -c "gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false"
+
 echo "Ansible playbook ran successfully."
 """
     process = subprocess.Popen(bash_script, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
