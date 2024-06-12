@@ -11,4 +11,6 @@ iptables-restore < ~/rules.v4
 ip6tables-restore < ~/rules.v6
 
 # Start de mitmproxy
-mitmdump --mode transparent --showhost -s /root/.mitmproxy/block.py > /home/student/kakapipidiraree.txt &
+chmod +x /home/warden/startup_code/start_mitm.sh
+nohup /home/warden/startup_code/start_mitm.sh
+# mitmdump --mode transparent --showhost -s /root/.mitmproxy/block.py > /home/student/kakapipidiraree.txt &
