@@ -47,7 +47,7 @@ iptables-save > ~/rules.v4
 ip6tables-save > ~/rules.v6
 
 # Start mitmproxy om configuratie bestanden te laten genereren
-mitmdump --mode transparent
+mitmdump --mode transparent &
 sleep 5
 pkill mitmdump
 
