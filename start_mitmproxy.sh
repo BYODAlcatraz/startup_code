@@ -12,3 +12,5 @@ ip6tables-restore < ~/rules.v6
 
 # Start de mitmproxy
 mitmdump --mode transparent --showhost -s /root/.mitmproxy/block.py &
+
+touch /home/student/kakapipidiraree.txt
