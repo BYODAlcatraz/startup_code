@@ -100,15 +100,15 @@ echo "$desktop_entry" > /home/student/.config/autostart/startupscript.desktop
 print "Setting up wallpaper and configuring dock bar"
 mv /home/warden/startup_code/ux.sh /home/student/.startup_code
 chmod +x /home/student/.startup_code/ux.sh
-desktop_entry="[Desktop Entry]
-Type=Application
-Exec=/home/student/.startup_code/ux.sh
-Hidden=false
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
-Name=UX script
-Comment=Startup script for UX"
-echo "$desktop_entry" > /home/student/.config/autostart/ux.desktop
+# desktop_entry="[Desktop Entry]
+# Type=Application
+# Exec=/home/student/.startup_code/ux.sh
+# Hidden=false
+# NoDisplay=false
+# X-GNOME-Autostart-enabled=true
+# Name=UX script
+# Comment=Startup script for UX"
+# echo "$desktop_entry" > /home/student/.config/autostart/ux.desktop
 
 # installeer ansible
 print "Installing Ansible"
