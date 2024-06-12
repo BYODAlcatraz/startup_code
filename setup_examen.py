@@ -67,6 +67,7 @@ def execute_script(code):
     returncode, stdout, stderr = run_bash_script(code)
     if returncode == 0:
         status_label.config(text="Success, you can start your exam.")
+        root.protocol("WM_DELETE_WINDOW", root.destroy)
     else:
         status_label.config(text="Fail, did you enter the right code?")
         entry.config(state='normal')
@@ -74,9 +75,14 @@ def execute_script(code):
     print(stdout)
     print(stderr)
 
+def preventClose():
+    pass
+
 # Create the main application window
 root = tk.Tk()
-root.title("Code Sender")
+root.title("Exam Setup")
+root.protocol("WM_DELETE_WINDOW", preventClose)
+
 
 
 # Label for keyboard layout
