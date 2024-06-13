@@ -125,8 +125,7 @@ ExecStart=bash /home/warden/startup_code/start_mitmproxy.sh
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/mitmproxy.service
 systemctl enable mitmproxy.service
-
-
+systemctl disable udisks2.service
 
 print "DONE!"
 
