@@ -96,7 +96,7 @@ label.pack(pady=10)
 layout = tk.StringVar()
 
 def changelayout(a, b, c):
-    setlayout = "setxkbmap " + layout.get()
+    setlayout = 'su student -c "setxkbmap ' + layout.get() + '"'
     process = subprocess.Popen(setlayout, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     stdout, stderr = process.communicate()
     return process.returncode, stdout, stderr
