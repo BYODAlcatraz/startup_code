@@ -71,7 +71,6 @@ def send_code():
 
 def execute_script(code):
     returncode, stdout, stderr = run_bash_script(code)
-    returncode = 0
     if returncode == 0:
         status_label.config(text="Success, you can start your exam.")
         root.protocol("WM_DELETE_WINDOW", root.destroy)
@@ -90,36 +89,39 @@ def preventClose():
 # Create the main application window
 root = tk.Tk()
 root.title("Exam Setup")
-root.geometry("380x360")
 root.eval('tk::PlaceWindow . center')
 root.resizable(False, False)
 root.protocol("WM_DELETE_WINDOW", preventClose)
 
 # Title label
 label = tk.Label(root, text="Welcome to your examination setup", font=("Arial", 18))
-label.pack(pady=10)
+label.pack(padx=30, pady=10)
+
+# Create a frame
+formcontainer = tk.Frame(root)
+formcontainer.pack(pady=10)
 
 # Label for r-number
-label = tk.Label(root, text="Student-number (rxxxxxxx)")
+label = tk.Label(formcontainer, text="Student-number (rxxxxxxx)")
 label.pack(pady=4, anchor="w")
 
 # Create an entry widget
-entry = tk.Entry(root, width=30)
+entry = tk.Entry(formcontainer, width=30)
 entry.pack(pady=4, anchor="w")
 
 # Create a label
-label = tk.Label(root, text="Exam Code")
+label = tk.Label(formcontainer, text="Exam Code")
 label.pack(pady=4, anchor="w")
 
 # Create an entry widget
-entry = tk.Entry(root, width=30)
+entry = tk.Entry(formcontainer, width=30)
 entry.pack(pady=4, anchor="w")
 
 # Bind the Enter key to the send_code function
 entry.bind("<Return>", lambda event: send_code())
 
 # Create a button to send the code
-button = tk.Button(root, text="Start", command=send_code, width=10, height=2)
+button = tk.Button(formcontainer, text="Start", command=send_code, width=10, height=2)
 button.pack(pady=10)
 
 # Create a status label
