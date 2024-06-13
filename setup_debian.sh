@@ -109,6 +109,8 @@ Name=UX script
 Comment=Startup script for UX"
 echo "$desktop_entry" > /home/student/.config/autostart/ux.desktop
 
+chown -R root:root /home/student/.config/autostart/
+
 # installeer ansible
 print "Installing Ansible"
 apt -y install ansible
