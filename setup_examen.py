@@ -115,26 +115,6 @@ label.pack(pady=4, anchor="w")
 entry = tk.Entry(root, width=30)
 entry.pack(pady=4, anchor="w")
 
-# Label for keyboard layout
-label = tk.Label(root, text="Preferred keyboard layout", anchor="w")
-label.pack(pady=4, anchor="w")
-
-# Radiobuttons for keyboard layout
-layout = tk.StringVar()
-
-
-def changelayout(a, b, c):
-    setlayout = 'su student -c "setxkbmap ' + layout.get() + '"'
-    process = subprocess.Popen(setlayout, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    stdout, stderr = process.communicate()
-    return process.returncode, stdout, stderr
-
-
-R1 = tk.Radiobutton(root, text="AZERTY", variable=layout, value="be").pack(side="top", ipady=5, anchor="w")
-R2 = tk.Radiobutton(root, text="QWERTY", variable=layout, value="us").pack(side="top", ipady=5, anchor="w")
-
-layout.trace_add('write', changelayout)
-
 # Bind the Enter key to the send_code function
 entry.bind("<Return>", lambda event: send_code())
 
