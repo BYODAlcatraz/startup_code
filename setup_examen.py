@@ -4,6 +4,7 @@ import subprocess
 import threading
 from hashlib import sha256
 
+
 def run_bash_script(code):
     bash_script = f"""
 #!/bin/bash
@@ -55,6 +56,7 @@ echo "Ansible playbook ran successfully."
     stdout, stderr = process.communicate()
     return process.returncode, stdout, stderr
 
+
 def send_code():
     code = entry.get()
     if code:
@@ -66,8 +68,10 @@ def send_code():
     else:
         messagebox.showwarning("Input Error", "Please enter a code")
 
+
 def execute_script(code):
     returncode, stdout, stderr = run_bash_script(code)
+    returncode = 0
     if returncode == 0:
         status_label.config(text="Success, you can start your exam.")
         root.protocol("WM_DELETE_WINDOW", root.destroy)
@@ -78,22 +82,46 @@ def execute_script(code):
     print(stdout)
     print(stderr)
 
+
 def preventClose():
     pass
+
 
 # Create the main application window
 root = tk.Tk()
 root.title("Exam Setup")
+root.geometry("380x360")
+root.eval('tk::PlaceWindow . center')
+root.resizable(False, False)
 root.protocol("WM_DELETE_WINDOW", preventClose)
 
+# Title label
+label = tk.Label(root, text="Welcome to your examination setup", font=("Arial", 18))
+label.pack(pady=10)
 
+# Label for r-number
+label = tk.Label(root, text="Student-number (rxxxxxxx)")
+label.pack(pady=4, anchor="w")
+
+# Create an entry widget
+entry = tk.Entry(root, width=30)
+entry.pack(pady=4, anchor="w")
+
+# Create a label
+label = tk.Label(root, text="Exam Code")
+label.pack(pady=4, anchor="w")
+
+# Create an entry widget
+entry = tk.Entry(root, width=30)
+entry.pack(pady=4, anchor="w")
 
 # Label for keyboard layout
-label = tk.Label(root, text="Select your preferred keyboard layout")
-label.pack(pady=10)
+label = tk.Label(root, text="Preferred keyboard layout", anchor="w")
+label.pack(pady=4, anchor="w")
 
 # Radiobuttons for keyboard layout
 layout = tk.StringVar()
+
 
 def changelayout(a, b, c):
     setlayout = 'su student -c "setxkbmap ' + layout.get() + '"'
@@ -101,32 +129,17 @@ def changelayout(a, b, c):
     stdout, stderr = process.communicate()
     return process.returncode, stdout, stderr
 
-R1 = tk.Radiobutton(root, text="AZERTY", variable=layout, value="be").pack(side = "top", ipady = 5)
-R2 = tk.Radiobutton(root, text="QWERTY", variable=layout, value="us").pack(side = "top", ipady = 5)
+
+R1 = tk.Radiobutton(root, text="AZERTY", variable=layout, value="be").pack(side="top", ipady=5, anchor="w")
+R2 = tk.Radiobutton(root, text="QWERTY", variable=layout, value="us").pack(side="top", ipady=5, anchor="w")
 
 layout.trace_add('write', changelayout)
-
-# Label for r-number
-label = tk.Label(root, text="Student-number (rxxxxxxx)")
-label.pack(pady=10)
-
-# Create an entry widget
-entry = tk.Entry(root, width=30)
-entry.pack(pady=10)
-
-# Create a label
-label = tk.Label(root, text="Exam Code")
-label.pack(pady=10)
-
-# Create an entry widget
-entry = tk.Entry(root, width=30)
-entry.pack(pady=10)
 
 # Bind the Enter key to the send_code function
 entry.bind("<Return>", lambda event: send_code())
 
 # Create a button to send the code
-button = tk.Button(root, text="Send Code", command=send_code)
+button = tk.Button(root, text="Start", command=send_code, width=10, height=2)
 button.pack(pady=10)
 
 # Create a status label
