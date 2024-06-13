@@ -30,13 +30,13 @@ print "Copying startup code to /home/warden"
 cp -r ../startup_code /home/warden/
 
 # Verdediging tegen booten in single user mode
-#read -s -p "Enter password: " passwd
-#echo 
+read -s -p "Enter password: " passwd
+echo 
 
-#HASHPW=$(echo -e "$passwd\n$passwd" | LC_ALL=C /usr/bin/grub-mkpasswd-pbkdf2 | awk '/hash of / {print $NF}')
+HASHPW=$(echo -e "$passwd\n$passwd" | LC_ALL=C /usr/bin/grub-mkpasswd-pbkdf2 | awk '/hash of / {print $NF}')
 
-#echo "set superusers=root" | tee -a /etc/grub.d/40_custom
-#echo "password_pbkdf2 root $HASHPW" | tee -a /etc/grub.d/40_custom
+echo "set superusers=root" | tee -a /etc/grub.d/40_custom
+echo "password_pbkdf2 root $HASHPW" | tee -a /etc/grub.d/40_custom
 
 # sed -i '/^CLASS=/ s/"$/ --unrestricted"/' /etc/grub.d/10_linux
 # sed -i '/GRUB_TIMEOUT/c\GRUB_TIMEOUT\=0' /etc/default/grub
