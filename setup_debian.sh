@@ -21,7 +21,7 @@ done
 if [ -z "$url" ]; then
     url=$DEFAULT_URL
 fi
-sed -i "/^PLAYBOOK_URL=/s|\".*\"|\"$url\"|" setup_examen.py
+sed -i "/^PLAYBOOK_URL=\"\"$/s|\"\"|\"$url\"|" setup_examen.py
 
 apt install -y python3-tk \
 wget \
