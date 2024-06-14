@@ -22,7 +22,7 @@ until check_internet; do
 done
 
 # Define the URL of the Ansible playbook
-PLAYBOOK_URL="https://byodAlcatraz.github.io/"
+PLAYBOOK_URL=""
 PLAYBOOK_FILE="/tmp/script.yaml"
 
 # Download the Ansible playbook

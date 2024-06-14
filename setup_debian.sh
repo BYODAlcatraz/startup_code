@@ -6,6 +6,23 @@ if [ "$(id -u)" -ne 0 ]; then
 	exit 1
 fi
 
+DEFAULT_URL="https://byodAlcatraz.github.io/"
+while getopts u:h flag
+do
+    case "${flag}" in
+        u) url=${OPTARG};;
+        h)
+            echo 'USAGE: setup_debian.sh [-u url]'
+            echo "-u url  url to get ansible exam configurations from (defaults to: \"$DEFAULT_URL\")"
+            echo '-h      show this message'
+            exit 0;;
+    esac
+done
+if [ -z "$url" ]; then
+    url=$DEFAULT_URL
+fi
+sed -i "/^PLAYBOOK_URL=/s|\".*\"|\"$url\"|" setup_examen.py
+
 apt install -y python3-tk \
 wget \
 git \
