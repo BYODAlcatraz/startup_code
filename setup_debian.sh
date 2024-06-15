@@ -97,6 +97,8 @@ print "Configuring startup python script to be ran at boot"
 mkdir -p /home/student/.startup_code
 mv /home/warden/startup_code/startup /home/student/.startup_code
 mv /home/warden/startup_code/wallpaper_exam.png /usr/share/wallpapers
+cp /home/warden/startup_code/desktop-background.xml /usr/share/images/desktop-base/
+cp /home/warden/startup_code/desktop-background.xml /usr/share/images/desktop-base/desktop-lockscreen.xml
 mkdir -p /home/student/.config/autostart
 chown -R student:student /home/student/.config /home/student/.startup_code
 chown root:root /home/student/.startup_code/startup
