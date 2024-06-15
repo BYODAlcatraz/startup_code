@@ -16,3 +16,6 @@ gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/wallpa
 
 # Add minimize and maximize buttons
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+
+# Set timzeone to CET
+timedatectl set-timezone CET
