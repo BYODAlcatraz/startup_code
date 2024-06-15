@@ -6,6 +6,7 @@ if [ "$(id -u)" -ne 0 ]; then
 	exit 1
 fi
 
+# Configureer de 'source' voor de ansible scripts
 DEFAULT_URL="https://byodAlcatraz.github.io/"
 while getopts u:h flag
 do
@@ -145,6 +146,9 @@ ExecStart=bash /home/warden/startup_code/start_mitmproxy.sh
 WantedBy=multi-user.target" > /etc/systemd/system/mitmproxy.service
 systemctl enable mitmproxy.service
 systemctl disable udisks2.service
+
+print "Setting timezone"
+timedatectl set-timezone CET
 
 print "DONE!"
 
