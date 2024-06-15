@@ -113,8 +113,8 @@ Comment=Startup script"
 echo "$desktop_entry" > /home/student/.config/autostart/startupscript.desktop
 
 
-#Desktop entry voor Dock bar en wallpaper
-print "Setting up wallpaper and configuring dock bar"
+#Desktop entry voor Dock bar, wallpaper en timezone
+print "Setting up wallpaper, configuring dock bar and setting timezone"
 mv /home/warden/startup_code/ux.sh /home/student/.startup_code
 chmod +x /home/student/.startup_code/ux.sh
 desktop_entry="[Desktop Entry]
@@ -147,8 +147,6 @@ WantedBy=multi-user.target" > /etc/systemd/system/mitmproxy.service
 systemctl enable mitmproxy.service
 systemctl disable udisks2.service
 
-print "Setting timezone"
-timedatectl set-timezone CET
 
 print "DONE!"
 
