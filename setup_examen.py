@@ -49,6 +49,8 @@ systemctl restart mitmproxy
 
 rm "/tmp/script.yaml"
 
+# Setting the timezone
+timedatectl set-timezone CET
 
 echo "Ansible playbook ran successfully."
 """
