@@ -14,6 +14,3 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true
 
 # Add minimize and maximize buttons
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
-
-# Set timzeone to CET
-timedatectl set-timezone CET
