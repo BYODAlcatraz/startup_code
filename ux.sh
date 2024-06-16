@@ -16,3 +16,4 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 
 # Open settings for wifi
+gnome-control-center
