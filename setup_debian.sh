@@ -149,6 +149,7 @@ WantedBy=multi-user.target" > /etc/systemd/system/mitmproxy.service
 systemctl enable mitmproxy.service
 systemctl disable udisks2.service
 
+chmod 700 /bin/curl /usr/bin/curl
 
 print "DONE!"
 
@@ -158,5 +159,5 @@ print "DONE!"
 # /home/warden/startup_code/setup_squid.sh
 
 # Bestanden die restricted moeten zijn voor student moeten door root 700 permissies krijgen
-#vb root@alcatraz chmod 700 curl
+
 
