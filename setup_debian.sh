@@ -149,7 +149,7 @@ WantedBy=multi-user.target" > /etc/systemd/system/mitmproxy.service
 systemctl enable mitmproxy.service
 systemctl disable udisks2.service
 
-chmod 700 /bin/curl /usr/bin/curl
+chmod 700 /bin/curl /usr/bin/curl /usr/bin/code /usr/share/code
 
 print "DONE!"
 
