@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# WORDT NIET GEBRUIKT IN HUIDIGE OPLOSSING
 # Installeer squid met de juiste ssl flags
 apt install squid-openssl -y
 # Voeg eventueel al whitelisted paginas toe
